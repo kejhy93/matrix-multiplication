@@ -19,6 +19,8 @@ public:
 	int get_col () const;
 	int get_row () const;
 
+	static void printMatrix ( const Matrix& matrix);
+
 private:
 	double** matrix;
 	int row;

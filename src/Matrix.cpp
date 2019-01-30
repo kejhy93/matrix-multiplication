@@ -57,6 +57,15 @@ int Matrix::get_row () const {
 	return this->row;
 }
 
+void Matrix::printMatrix(const Matrix& matrix) {
+	for ( int rowCounter = 0 ; rowCounter < matrix.get_row() ; ++ rowCounter) {
+		for ( int colCounter = 0 ; colCounter < matrix.get_col() ; ++ colCounter ) {
+			std::cout << matrix.get_value(rowCounter, colCounter) << " ";
+		}
+		std::cout << std::endl;
+	}
+}
+
 void Matrix::read_matrix ( std::string path) {
 	// Verify existance of file
 	std::ifstream in_stream ( path.c_str(), std::ios::in );

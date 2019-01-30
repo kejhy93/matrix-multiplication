@@ -14,7 +14,8 @@ Matrix* SingleThreadMatrixMultiplication::multiply ( const Matrix& left, const M
 	bool areMatrixCompatibleForMultiplication = MatrixMultiplication::areMatricesCompatibleForMultiplication(left, right);
 
 	if ( !areMatrixCompatibleForMultiplication ) {
-		return nullptr;
+		std::cerr << "Given matrices are not compatible to multiple." << std::endl;
+		return new Matrix(0,0);
 	}
 
 	int rowMultipliedMatrix = rowLeftMatrix;
