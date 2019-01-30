@@ -10,6 +10,22 @@ Matrix::Matrix(const std::string & path) {
 	read_matrix(path);
 }
 
+Matrix::Matrix(const int& row, const int& col) {
+	this->row = row;
+	this->col = col;
+
+	std::cout << "[Matrix::Matrix] Row=" << row << ", col=" << col << std::endl;
+
+
+	this->matrix = new double*[row];
+	for ( int rowCounter = 0 ; rowCounter < row ; ++ rowCounter ) {
+		this->matrix[rowCounter] = new double[col];
+		for ( int colCounter = 0 ; colCounter < col ; ++ colCounter ) {
+			this->matrix[rowCounter][colCounter] = 0;
+		}
+	}
+}
+
 Matrix::~Matrix() {
 	std::cout << "[Matrix::~Matrix] destruction" << std::endl;
 	for ( int rowCounter = 0 ; rowCounter < this->row ; ++ rowCounter ) {
@@ -22,7 +38,7 @@ double Matrix::get_value(const int & row, const int & col) const {
 	return matrix[row][col];
 }
 
-void Matrix::set_value ( const int & row, const int & col, const double & n_value ) {
+void Matrix::set_value ( const int & row, const int & col, double n_value ) {
 	bool are_parameters_valid = this->check_parameters(row, col);
 
 	if ( !are_parameters_valid ) {
@@ -31,6 +47,14 @@ void Matrix::set_value ( const int & row, const int & col, const double & n_valu
 	}
 
 	this->matrix[row][col] = n_value;
+}
+
+int Matrix::get_col () const {
+	return this->col;
+}
+
+int Matrix::get_row () const {
+	return this->row;
 }
 
 void Matrix::read_matrix ( std::string path) {
@@ -76,8 +100,8 @@ void Matrix::read_matrix_content(std::ifstream & input_stream) {
 }
 
 bool Matrix::check_parameters ( const int & row, const int & col) const {
-	bool is_row_valid = 0 >= row && row > this->row;
-	bool is_col_valid = 0 >= col && col > this->col;
+	bool is_row_valid = 0 <= row && row < this->row;
+	bool is_col_valid = 0 <= col && col < this->col;
 
 	return is_row_valid && is_col_valid;
 }
