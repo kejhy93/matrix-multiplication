@@ -6,6 +6,8 @@
 class SingleThreadMatrixMultiplication : public MatrixMultiplication {
 public:
 	Matrix* multiply ( const Matrix& left, const Matrix& right);
+
+	double partiallyMatrixMultiplication ( const Matrix& left, const Matrix& right, const int& row, const int& col);
 };
 
 #endif

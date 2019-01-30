@@ -24,17 +24,20 @@ Matrix* SingleThreadMatrixMultiplication::multiply ( const Matrix& left, const M
 	Matrix* finalMatrix = new Matrix(rowMultipliedMatrix, colMultipliedMatrix);
 	// std::cout << "final matrix = [" << finalMatrix->get_row() << ";" << finalMatrix->get_col() << "]" << std::endl;
 
-	for ( int rowCounter = 0 ; rowCounter < rowMultipliedMatrix ; ++ rowCounter ) {
+	for ( int rowCounter = 0 ; rowCounter < rowMultipliedMatrix ; ++ rowCounter) {
 		for ( int colCounter = 0 ; colCounter < colMultipliedMatrix ; ++ colCounter ) {
-			double tmpSum = 0;
-			for ( int index = 0 ; index < colLeftMatrix ; ++ index ) {
-				// std::cout << "Row=" << rowCounter << ",Col=" << colCounter << ",Index=" << index << std::endl;
-				tmpSum += left.get_value(rowCounter, index) * right.get_value(index, colCounter);
-			}
-			// std::cout << "set tmp_sum to [" << rowCounter << ";" << colCounter << "] = " << tmpSum << std::endl;
-			finalMatrix->set_value(rowCounter, colCounter, tmpSum);
+			double partiallyResult = this->partiallyMatrixMultiplication ( left, right, rowCounter, colCounter);
+
+			finalMatrix->set_value(rowCounter, colCounter, partiallyResult);
 		}
 	}
-
 	return finalMatrix;
+}
+
+double SingleThreadMatrixMultiplication::partiallyMatrixMultiplication ( const Matrix& left, const Matrix& right, const int& row, const int& col) {
+	double sum = 0.0;
+	for ( int index = 0 ; index < left.get_col() ; ++ index ) {
+		sum += left.get_value(row, index) * right.get_value(index, col);
+	}
+	return sum;
 }
