@@ -12,6 +12,10 @@ Matrix::Matrix(const std::string & path) {
 
 Matrix::~Matrix() {
 	std::cout << "[Matrix::~Matrix] destruction" << std::endl;
+	for ( int rowCounter = 0 ; rowCounter < this->row ; ++ rowCounter ) {
+		delete[] this->matrix[rowCounter];
+	}
+	delete[] this->matrix;
 }
 
 double Matrix::get_value(const int & row, const int & col) const {
@@ -30,16 +34,45 @@ void Matrix::set_value ( const int & row, const int & col, const double & n_valu
 }
 
 void Matrix::read_matrix ( std::string path) {
-	read_matrix_size ( path );
-	read_matrix_content ( path );
+	// Verify existance of file
+	std::ifstream in_stream ( path.c_str(), std::ios::in );
+
+	read_matrix_size ( in_stream );
+	read_matrix_content ( in_stream );
 }
 
-void Matrix::read_matrix_size(std::string path) {
-	
+void Matrix::read_matrix_size(std::ifstream& input_stream) {
+	std::string line;
+	getline(input_stream, line);
+	std::stringstream ss ( line );
+	ss >> this->row >> this->col;
+	std::cout << "Size of matrix " << this->row << "x" << this->col << std::endl;
+
+	this->matrix = new double*[this->row];
+	for ( int rowCounter = 0 ; rowCounter < this->row ; ++ rowCounter ) {
+		this->matrix[rowCounter] = new double[this->col];
+	}
 }
 
-void Matrix::read_matrix_content(std::string path) {
+void Matrix::read_matrix_content(std::ifstream & input_stream) {
+	double value = 0.0;
+	std::string line;
 
+	for ( int row = 0 ; row < this->row ; ++ row ) {
+		getline(input_stream, line);
+		std::stringstream ss ( line );
+		for ( int col = 0 ; col < this->col ; ++ col ) {
+			ss >> value;
+			this->matrix[row][col] = value;
+		}
+	}
+
+	for ( int row = 0 ; row < this->row ; ++ row ) {
+		for ( int col = 0 ; col < this->col ; ++ col ) {
+			std::cout << this->matrix[row][col] << " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 bool Matrix::check_parameters ( const int & row, const int & col) const {

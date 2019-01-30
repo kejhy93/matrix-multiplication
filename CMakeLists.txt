@@ -19,7 +19,7 @@ target_link_libraries(MatrixMult Threads::Threads)
 
 
 if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
-    target_compile_options( MatrixMult PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic)
+    target_compile_options( MatrixMult PRIVATE -Wall -Wextra -Wunreachable-code -Wpedantic -g)
 endif()
 if ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
     target_compile_options( MatrixMult PRIVATE /W4 )
