@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 class Matrix {
 
@@ -21,8 +23,8 @@ private:
 	bool check_parameters ( const int & row, const int & col) const;
 
 	void read_matrix ( std::string path);
-	void read_matrix_size(std::string path);
-	void read_matrix_content(std::string path);
+	void read_matrix_size(std::ifstream& input_stream);
+	void read_matrix_content(std::ifstream& input_stream);
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 int main(int argc, char ** argv) {
 
-	std::string path_to_file = "a";	
+	std::string path_to_file = "A";	
 
 	Matrix * matrix = new Matrix(path_to_file);
 
