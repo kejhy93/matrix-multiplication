@@ -7,6 +7,9 @@
 class MatrixMultiplication {
 
 public:
+	virtual ~MatrixMultiplication();
+
+
 	virtual Matrix* multiply(const Matrix& left, const Matrix& right) = 0;
 
 	static bool areMatricesCompatibleForMultiplication ( const Matrix& left, const Matrix& right);

@@ -1,5 +1,9 @@
 #include "MatrixMultiplication.h"
 
+MatrixMultiplication::~MatrixMultiplication() {
+	
+}
+
 bool MatrixMultiplication::areMatricesCompatibleForMultiplication ( const Matrix& left, const Matrix& right) {
 	int colLeftMatrix, rowRightMatrix;
 

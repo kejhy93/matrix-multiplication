@@ -1,14 +1,15 @@
 #include "SingleThreadMatrixMultiplication.h"
 
+SingleThreadMatrixMultiplication::~SingleThreadMatrixMultiplication() {
+	
+}
+
 Matrix* SingleThreadMatrixMultiplication::multiply ( const Matrix& left, const Matrix& right) {
-	int rowLeftMatrix, colLeftMatrix, rowRightMatrix, colRightMatrix;
+	int rowLeftMatrix, colRightMatrix;
 
 	std::cout << "[SingleThreadMatrixMultiplication]" << std::endl;
 
 	rowLeftMatrix = left.get_row();
-	colLeftMatrix = left.get_col();
-
-	rowRightMatrix = right.get_row();
 	colRightMatrix = right.get_col();
 
 	bool areMatrixCompatibleForMultiplication = MatrixMultiplication::areMatricesCompatibleForMultiplication(left, right);
