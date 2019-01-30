@@ -1,0 +1,10 @@
+install: make get-deps
+compiler: clang
+
+ddons:
+  apt:
+    sources:
+      - george-edison55-precise-backports
+    packages:
+      - cmake-data
+      - cmake
