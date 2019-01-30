@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Matrix.h"
+#include "lib/Matrix.h"
 
 int main(int argc, char ** argv) {
 
