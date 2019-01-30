@@ -7,8 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-include_directories(${PROJECT_SOURCE_DIR})
-file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/*.cpp)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/lib)
+file(GLOB SOURCES main.cpp ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 add_executable(MatrixMult ${SOURCES})
 
