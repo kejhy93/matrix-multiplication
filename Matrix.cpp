@@ -15,20 +15,15 @@ Matrix::~Matrix() {
 }
 
 double Matrix::get_value(const int & row, const int & col) const {
-	bool are_parameters_valid = this->check_parameters(row, col);
-
-	if ( are_parameters_valid ) {
-		return matrix[row][col];
-	}
-
-	throw std::invalid_argument ( "Input parameters are wrong.");
+	return matrix[row][col];
 }
 
 void Matrix::set_value ( const int & row, const int & col, const double & n_value ) {
 	bool are_parameters_valid = this->check_parameters(row, col);
 
 	if ( !are_parameters_valid ) {
-		throw std::invalid_argument ( "Input parameters are wrong.");
+		std::cerr << "Parameters are wrong" << std::endl;
+		return;
 	}
 
 	this->matrix[row][col] = n_value;
