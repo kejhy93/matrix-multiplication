@@ -10,10 +10,16 @@ class Matrix {
 
 public:
 	Matrix (const std::string & path);
+	Matrix ( const int& row, const int& col);
 	virtual ~Matrix();
 
 	double get_value( const int & row, const int & col ) const;
-	void set_value ( const int & row, const int & col, const double & n_value );
+	void set_value ( const int & row, const int & col, double n_value );
+
+	int get_col () const;
+	int get_row () const;
+
+	static void printMatrix ( const Matrix& matrix);
 
 private:
 	double** matrix;
