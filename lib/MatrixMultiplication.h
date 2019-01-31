@@ -13,6 +13,8 @@ public:
 	virtual Matrix* multiply(const Matrix& left, const Matrix& right) = 0;
 
 	static bool areMatricesCompatibleForMultiplication ( const Matrix& left, const Matrix& right);
+	
+	double linear_combination ( const Matrix& left, const Matrix& right, const int& row, const int& col);
 };
 
 #endif
