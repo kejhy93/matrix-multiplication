@@ -66,6 +66,18 @@ void Matrix::printMatrix(const Matrix& matrix) {
 	}
 }
 
+Matrix* Matrix::generate_random_matrix(const int row, const int col) {
+	Matrix* random_matrix = new Matrix(row, col);
+
+	for ( int row_counter = 0 ; row_counter < row ; ++ row_counter) {
+		for ( int col_counter = 0 ; col_counter < col ; ++ col_counter ) {
+			random_matrix->set_value(row_counter, col_counter, row_counter*row + col_counter);
+		}
+	}
+
+	return random_matrix;
+}
+
 void Matrix::read_matrix ( std::string path) {
 	// Verify existance of file
 	std::ifstream in_stream ( path.c_str(), std::ios::in );
