@@ -6,10 +6,10 @@ Executor::Executor ( int number_of_workers) : m_number_of_workers(number_of_work
 
 	workers = new Worker*[m_number_of_workers];
 
+	queue_of_tasks = new ThreadQueue();
 	for ( int index = 0 ; index < m_number_of_workers ; ++ index ) {
 		std::cout << "Create worker id=" << index << std::endl;
 		workers[index] = new Worker(index, queue_of_tasks);
-
 
 		std::cout << "Start worker id=" << index << std::endl;
 		threads[index] = new std::thread(&Worker::do_job, workers[index] );
@@ -22,7 +22,7 @@ Executor::~Executor() {
 		threads[index]->join();
 		delete workers[index];
 	}
-	// delete queue_of_tasks;
+	delete queue_of_tasks;
 	delete[] threads;
 	delete[] workers;
 	std::cout << "Executor desctruction finished" << std::endl;
@@ -40,9 +40,9 @@ void Executor::execute ( const Matrix& left, const Matrix& right, Matrix& result
 		int col_index = index % final_col;
 		std::cout << "[Executor] Create task [" << row_index << ";" << col_index << "]" << std::endl;
 
-		MatrixThreadData * data = new MatrixThreadData(left, right, result, row_index, col_index );
+		MatrixThreadData * data = new MatrixThreadData(left, right, result, row_index, col_index, index );
 
-		queue_of_tasks.push(data);
+		queue_of_tasks->push(data);
 	}
 
 	std::cout << "Executor computation is finished" << std::endl;

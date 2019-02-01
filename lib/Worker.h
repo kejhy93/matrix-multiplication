@@ -4,13 +4,13 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include <queue>
 #include "Matrix.h"
 #include "MatrixThreadData.h"
+#include "ThreadQueue.h"
 
 class Worker {
 public:
-	Worker ( int id, std::queue<MatrixThreadData*>& queue );
+	Worker ( int id, ThreadQueue* queue );
 	virtual ~Worker();
 
 	void do_job ();
@@ -18,7 +18,7 @@ public:
 
 
 private:
-	std::queue<MatrixThreadData*>& m_queue;
+	ThreadQueue* m_queue;
 
 	const int m_id;
 	int is_running;

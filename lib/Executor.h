@@ -4,6 +4,7 @@
 #include <list>
 #include "Worker.h"
 #include "MatrixThreadData.h"
+#include "ThreadQueue.h"
 #include "Matrix.h"
 
 class Executor {
@@ -19,7 +20,7 @@ private:
 
 	const int m_number_of_workers;
 
-	std::queue<MatrixThreadData*> queue_of_tasks;
+	ThreadQueue* queue_of_tasks;
 };
 
 #endif
