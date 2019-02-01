@@ -19,8 +19,11 @@ Executor::Executor ( int number_of_workers) : m_number_of_workers(number_of_work
 Executor::~Executor() {
 	std::cout << "Executor desctruction start" << std::endl;
 	for ( int index = 0 ; index < m_number_of_workers ; ++ index) {
+		std::cout << "Executor desctruction thread id=" << index << " started" << std::endl;
 		threads[index]->join();
+		delete threads[index];
 		delete workers[index];
+		std::cout << "Executor desctruction thread id=" << index << " finished" << std::endl;
 	}
 	delete queue_of_tasks;
 	delete[] threads;
