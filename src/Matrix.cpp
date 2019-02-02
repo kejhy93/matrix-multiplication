@@ -66,6 +66,7 @@ void Matrix::printMatrix(const Matrix& matrix) {
 	}
 }
 
+
 Matrix* Matrix::generate_random_matrix(const int row, const int col) {
 	Matrix* random_matrix = new Matrix(row, col);
 
@@ -76,6 +77,21 @@ Matrix* Matrix::generate_random_matrix(const int row, const int col) {
 	}
 
 	return random_matrix;
+}
+
+void Matrix::export_to_file ( std::string path) const {
+	std::cout << "export of matrix started" << std::endl;
+	std::ofstream out_stream(path.c_str(), std::ios::out);
+
+	out_stream << row << " " << col << "\n";
+	for ( int row_counter = 0 ; row_counter < row ; ++ row_counter) {
+		for ( int col_counter = 0 ; col_counter < col-1 ; ++ col_counter ) {
+			out_stream << matrix[row_counter][col_counter] << " ";
+		}
+		out_stream << matrix[row_counter][col-1] << "\n";
+	}
+
+	std::cout << "export of matrix is finished" << std::endl;
 }
 
 void Matrix::read_matrix ( std::string path) {
