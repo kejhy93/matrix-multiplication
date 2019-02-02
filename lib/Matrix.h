@@ -20,6 +20,7 @@ public:
 	int get_row () const;
 
 	static void printMatrix ( const Matrix& matrix);
+	static Matrix* generate_random_matrix(const int row, const int col);
 
 	void export_to_file(std::string path) const;
 
