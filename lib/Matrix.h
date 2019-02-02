@@ -21,6 +21,8 @@ public:
 
 	static void printMatrix ( const Matrix& matrix);
 
+	void export_to_file(std::string path) const;
+
 private:
 	double** matrix;
 	int row;
