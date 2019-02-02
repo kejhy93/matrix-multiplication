@@ -24,6 +24,7 @@ int main(int argc, char ** argv) {
 	Matrix *final_matrix = matrix_multiplication->multiply(*left_matrix, *right_matrix);
 
 	Matrix::printMatrix(*final_matrix);
+	final_matrix->export_to_file("result_matrix");
 
 	delete final_matrix;
 	delete matrix_multiplication;
