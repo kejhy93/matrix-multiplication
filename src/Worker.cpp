@@ -12,18 +12,18 @@ Worker::~Worker() {
 
 void Worker::do_job () {
 	while ( is_running == 0 || m_queue->size() != 0 ) {
-		std::cout << "[Worker-" << m_id << "][threadId=" << std::this_thread::get_id() << "] is_running=" << is_running << std::endl;
+		// std::cout << "[Worker-" << m_id << "][threadId=" << std::this_thread::get_id() << "] is_running=" << is_running << std::endl;
 		MatrixThreadData* task;
 		if ( m_queue->is_empty() ) {
-			std::cout << "[Worker-" << m_id << "][threadId=" << std::this_thread::get_id() << "] Queue is empty" << std::endl;
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			// std::cout << "[Worker-" << m_id << "][threadId=" << std::this_thread::get_id() << "] Queue is empty" << std::endl;
+			// std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		} else {
-			std::cout << "[Worker-" << m_id << "][threadId=" << std::this_thread::get_id() << "] Queue has " << m_queue->size() << std::endl;
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			// std::cout << "[Worker-" << m_id << "][threadId=" << std::this_thread::get_id() << "] Queue has " << m_queue->size() << std::endl;
+			// std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 			task = m_queue->pop();
 
 			if ( task != nullptr ) {
-				std::cout << "[Worker-" << m_id << "][Task-" << task->m_id << "] Received task" << std::endl;
+				// std::cout << "[Worker-" << m_id << "][Task-" << task->m_id << "] Received task" << std::endl;
 
 				double sum = 0.0;
 				for ( int index = 0 ; index < task->m_left_matrix.get_col() ; ++ index ) {

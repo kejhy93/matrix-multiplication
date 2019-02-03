@@ -25,7 +25,7 @@ Matrix* MultiThreadMatrixMultiplication::multiply ( const Matrix& left, const Ma
 	Matrix* finalMatrix = new Matrix(rowMultipliedMatrix, colMultipliedMatrix);
 	std::cout << "final matrix = [" << finalMatrix->get_row() << ";" << finalMatrix->get_col() << "]" << std::endl;
 
-    Executor* executor = new Executor(2);
+    Executor* executor = new Executor(8);
     executor->execute ( left, right, *finalMatrix);
 
     delete executor;

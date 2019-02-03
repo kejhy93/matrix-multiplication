@@ -41,7 +41,7 @@ void Executor::execute ( const Matrix& left, const Matrix& right, Matrix& result
 	for ( int index = 0 ; index < number_of_tasks ; ++ index ) {
 		int row_index = index / final_row;
 		int col_index = index % final_col;
-		std::cout << "[Executor] Create task [" << row_index << ";" << col_index << "]" << std::endl;
+		// std::cout << "[Executor] Create task [" << row_index << ";" << col_index << "]" << std::endl;
 
 		MatrixThreadData * data = new MatrixThreadData(left, right, result, row_index, col_index, index );
 

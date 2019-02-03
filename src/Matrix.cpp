@@ -128,12 +128,12 @@ void Matrix::read_matrix_content(std::ifstream & input_stream) {
 		}
 	}
 
-	for ( int row = 0 ; row < this->row ; ++ row ) {
-		for ( int col = 0 ; col < this->col ; ++ col ) {
-			std::cout << this->matrix[row][col] << " ";
-		}
-		std::cout << std::endl;
-	}
+	// for ( int row = 0 ; row < this->row ; ++ row ) {
+	// 	for ( int col = 0 ; col < this->col ; ++ col ) {
+	// 		std::cout << this->matrix[row][col] << " ";
+	// 	}
+	// 	std::cout << std::endl;
+	// }
 }
 
 bool Matrix::check_parameters ( const int & row, const int & col) const {
