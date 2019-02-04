@@ -19,7 +19,6 @@ double MatrixMultiplication::linear_combination ( const Matrix& left, const Matr
 	double sum = 0.0;
 	for ( int index = 0 ; index < left.get_col() ; ++ index) {
 		sum += left.get_value(row, index) * right.get_value(index, col);
-		std::cout << "Sum=" << sum << std::endl;
 	}
 
 	return sum;

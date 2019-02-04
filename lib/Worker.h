@@ -18,9 +18,9 @@ public:
 
 
 private:
-	ThreadQueue* m_queue;
-
 	const int m_id;
+	ThreadQueue* m_queue;
+	
 	int is_running;
 };
 
