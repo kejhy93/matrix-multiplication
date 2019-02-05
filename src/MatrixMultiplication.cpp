@@ -4,6 +4,10 @@ MatrixMultiplication::~MatrixMultiplication() {
 	
 }
 
+/**
+ * Verify that matrix multiplcation can be applied.
+ * true if matrix multiplication can be applied, false otherwise
+ */
 bool MatrixMultiplication::areMatricesCompatibleForMultiplication ( const Matrix& left, const Matrix& right) {
 	int colLeftMatrix, rowRightMatrix;
 
@@ -14,6 +18,9 @@ bool MatrixMultiplication::areMatricesCompatibleForMultiplication ( const Matrix
 	return colLeftMatrix == rowRightMatrix;
 }
 
+/**
+ * Linear combination
+ */
 double MatrixMultiplication::linear_combination ( const Matrix& left, const Matrix& right, const int& row, const int& col) 
 {
 	double sum = 0.0;

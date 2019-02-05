@@ -27,18 +27,10 @@ Matrix* SingleThreadMatrixMultiplication::multiply ( const Matrix& left, const M
 
 	for ( int rowCounter = 0 ; rowCounter < rowMultipliedMatrix ; ++ rowCounter) {
 		for ( int colCounter = 0 ; colCounter < colMultipliedMatrix ; ++ colCounter ) {
-			double partiallyResult = this->partiallyMatrixMultiplication ( left, right, rowCounter, colCounter);
+			double partiallyResult = MatrixMultiplication::linear_combination( left, right, rowCounter, colCounter);
 
 			finalMatrix->set_value(rowCounter, colCounter, partiallyResult);
 		}
 	}
 	return finalMatrix;
-}
-
-double SingleThreadMatrixMultiplication::partiallyMatrixMultiplication ( const Matrix& left, const Matrix& right, const int& row, const int& col) {
-	double sum = 0.0;
-	for ( int index = 0 ; index < left.get_col() ; ++ index ) {
-		sum += left.get_value(row, index) * right.get_value(index, col);
-	}
-	return sum;
 }

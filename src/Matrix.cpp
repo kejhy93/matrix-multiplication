@@ -96,11 +96,21 @@ void Matrix::read_matrix ( std::string path) {
 	read_matrix_content ( in_stream );
 }
 
+/**
+ * Read size of the matrix.
+ */
 void Matrix::read_matrix_size(std::ifstream& input_stream) {
 	std::string line;
 	getline(input_stream, line);
 	std::stringstream ss ( line );
 	ss >> this->row >> this->col;
+
+	if ( ss.fail() ) {
+		std::cerr << "Wrong size of matrix" << std::endl;
+		this->row = this->col = 0;
+		this->matrix = nullptr;
+		return;
+	}
 
 	this->matrix = new double*[this->row];
 	for ( int rowCounter = 0 ; rowCounter < this->row ; ++ rowCounter ) {
@@ -117,6 +127,10 @@ void Matrix::read_matrix_content(std::ifstream & input_stream) {
 		std::stringstream ss ( line );
 		for ( int col = 0 ; col < this->col ; ++ col ) {
 			ss >> value;
+			if ( ss.fail() ) {
+				std::cerr << " Error during reading matrix file" << std::endl;
+				return;
+			}
 			this->matrix[row][col] = value;
 		}
 	}

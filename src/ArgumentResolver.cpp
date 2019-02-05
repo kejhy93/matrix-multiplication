@@ -9,8 +9,11 @@ ArgumentResolver::~ArgumentResolver() {
 
 }
 
+/**
+ * Parse command line arguments and verify all mandatory arguments.
+ */
 int ArgumentResolver::parse_command_line_arguments() {
-
+	// start from 1, 0 is name of the program
 	for ( int argument_index = 1 ; argument_index < m_argument_count ;  ) {
 		if ( strcmp(m_arguments[argument_index], random_matrix_param.c_str()) == 0 ) {
 			// generate random matrix row_left col_left row_right col_right
@@ -87,6 +90,7 @@ int ArgumentResolver::parse_command_line_arguments() {
 		}
 	}
 
+	// Check if mandatory arguments were saved
 	if ( path_to_file_left_matrix.compare("") == 0 ) {
 		std::cerr << "Left matrix has to be specified" << std::endl;
 		return 1;
@@ -100,7 +104,13 @@ int ArgumentResolver::parse_command_line_arguments() {
 	return 0;
 }
 
+/**
+ * Parse number from command line argument at index.
+ *
+ * return 0 for success, otherwise error
+ */
 int ArgumentResolver::parse_number ( int &result, const int index) const {
+	// if tested index is out of range
 	if ( index == m_argument_count) {
 		return 1;
 	}
@@ -116,6 +126,11 @@ int ArgumentResolver::parse_number ( int &result, const int index) const {
 	}
 }
 
+/**
+ * Parse string from command line argument at index and test if file exist.
+ *
+ * return 0 for success, otherwise error
+ */
 int ArgumentResolver::parse_file ( std::string& result, const int index) const {
 	if ( index == m_argument_count) {
 		return 1;

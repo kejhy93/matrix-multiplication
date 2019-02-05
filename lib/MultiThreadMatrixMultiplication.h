@@ -11,6 +11,7 @@ class MultiThreadMatrixMultiplication : public MatrixMultiplication {
 public:
 	MultiThreadMatrixMultiplication(const int thread_count);
 	virtual ~MultiThreadMatrixMultiplication();
+	
 	Matrix* multiply ( const Matrix& left, const Matrix& right);
 
 protected:

@@ -12,10 +12,26 @@ public:
 	ThreadQueue();
 	virtual ~ThreadQueue();
 
+	/**
+ 	 * Push new task to queue thread.
+ 	 * Thread-safe as possible.
+ 	 */
 	void push ( MatrixThreadData* data);
+
+	/**
+ 	 * Pop task from queue task.
+ 	 * Thread-safe as possible.
+ 	 */
 	MatrixThreadData* pop();
 
+	/**
+ 	 * Pop task from queue task.
+ 	 * Thread-safe as possible.
+ 	 */
 	bool is_empty();
+	/**
+ 	 * Check if queue task is empty.
+ 	 */
 	int size();
 
 private:

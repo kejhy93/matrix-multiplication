@@ -11,16 +11,13 @@
 
 int main(int argc, char ** argv) {
 
+	// Parse command line arguments
 	ArgumentResolver *command_line_resolver = new ArgumentResolver(argc, argv);
 	if ( command_line_resolver->parse_command_line_arguments() != 0 ) {
 		std::cerr << "Command line arguments are wrong" << std::endl;
 		delete command_line_resolver;
 		return 1;
 	}
-
-	std::string path_to_file_left_matrix = "left_matrix";	
-	std::string path_to_file_right_matrix = "right_matrix";	
-	std::string path_to_output_file = "result_matrix";
   
 	Matrix *left_matrix, *right_matrix;
 
