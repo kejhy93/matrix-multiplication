@@ -11,7 +11,7 @@
 
 class Worker {
 public:
-	Worker ( int id, ThreadQueue* queue );
+	Worker (ThreadQueue* queue );
 	virtual ~Worker();
 
 	/**
@@ -28,7 +28,6 @@ public:
 
 
 private:
-	const int m_id;
 	ThreadQueue* m_queue;
 
 	int are_task_generated;

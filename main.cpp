@@ -28,6 +28,7 @@ int main(int argc, char ** argv) {
 	Matrix *left_matrix, *right_matrix;
 
 	if ( command_line_resolver->shouldIGenerateRandomMatrices() ) {
+		std::cout << "Generation random matrices" << std::endl;
 		left_matrix = Matrix::generate_random_matrix(command_line_resolver->get_left_matrix_row(), command_line_resolver->get_left_matrix_col());
 		right_matrix = Matrix::generate_random_matrix(command_line_resolver->get_right_matrix_row(), command_line_resolver->get_right_matrix_col());
 
@@ -37,17 +38,17 @@ int main(int argc, char ** argv) {
 		left_matrix = new Matrix(command_line_resolver->get_path_to_left_matrix());
 		right_matrix = new Matrix(command_line_resolver->get_path_to_right_matrix());
 
-		bool are_matrices_valid = true;
+		bool are_matrices_invalid = false;
 		if ( left_matrix->get_row() == 0 && left_matrix->get_col() == 0 ) {
 			std::cerr << "Error during loading left-matrix" << std::endl;
-			are_matrices_valid = false;
+			are_matrices_invalid = true;
 		}
 		if ( right_matrix->get_row() == 0 && right_matrix->get_col() == 0 ) {
 			std::cerr << "Error during loading right-matrix" << std::endl;
-			are_matrices_valid = false;
+			are_matrices_invalid = true;
 		}
 
-		if ( are_matrices_valid) {
+		if ( are_matrices_invalid) {
 			delete left_matrix;
 			delete right_matrix;
 			delete command_line_resolver;

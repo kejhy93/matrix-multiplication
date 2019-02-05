@@ -66,11 +66,17 @@ Matrix* Matrix::generate_random_matrix(const int row, const int col) {
 
 	for ( int row_counter = 0 ; row_counter < row ; ++ row_counter) {
 		for ( int col_counter = 0 ; col_counter < col ; ++ col_counter ) {
-			random_matrix->set_value(row_counter, col_counter, row_counter*row + col_counter);
+			random_matrix->set_value(row_counter, col_counter, get_random_double());
 		}
 	}
 
 	return random_matrix;
+}
+
+double Matrix::get_random_double() {
+	static std::mt19937 mt{ std::random_device{}() };
+	static std::uniform_real_distribution<> dist(-1000, 1000);
+	return dist(mt);
 }
 
 void Matrix::export_to_file ( std::string path) const {

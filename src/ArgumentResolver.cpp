@@ -80,11 +80,7 @@ int ArgumentResolver::parse_command_line_arguments() {
 			argument_index += 2;
 		} else if ( strcmp(m_arguments[argument_index], result_matrix_arg.c_str()) == 0 ) {
 			// result_matrix path_to_file
-			if ( parse_file(path_to_file_result_matrix, argument_index+1) != 0 ) {
-				std::cerr << "Wrong argument, expected file, got " << m_arguments[argument_index+1] << std::endl;
-				std::cerr << "expected " << result_matrix_arg << " path_to_file" << std::endl;
-				std::cerr << "result matrix will not be exported" << std::endl;
-			}
+			parse_file(path_to_file_result_matrix, argument_index+1);
 
 			argument_index += 2;
 		} else {

@@ -9,7 +9,7 @@ Executor::Executor ( int number_of_workers) : m_number_of_workers(number_of_work
 	queue_of_tasks = new ThreadQueue();
 
 	for ( int index = 0 ; index < m_number_of_workers ; ++ index ) {
-		workers[index] = new Worker(index, queue_of_tasks);
+		workers[index] = new Worker(queue_of_tasks);
 		// start worker thread 
 		threads[index] = new std::thread(&Worker::do_job, workers[index] );
 	}

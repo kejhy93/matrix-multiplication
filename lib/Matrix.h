@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <random>
 
 class Matrix {
 
@@ -34,6 +35,8 @@ private:
 	void read_matrix ( std::string path);
 	void read_matrix_size(std::ifstream& input_stream);
 	void read_matrix_content(std::ifstream& input_stream);
+
+	static double get_random_double();
 };
 
 #endif
