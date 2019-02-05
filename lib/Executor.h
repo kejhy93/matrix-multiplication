@@ -12,6 +12,9 @@ public:
 	Executor ( int number_of_workers);
 	virtual ~Executor();
 
+	/**
+	 * Generate task and inserted into queue task
+	 */
 	void execute ( const Matrix& left, const Matrix& right, Matrix& result);
 
 private:

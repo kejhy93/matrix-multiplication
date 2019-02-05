@@ -4,8 +4,6 @@ Matrix::Matrix(const std::string & path) {
 	this->row = 0;
 	this->col = 0;
 	this->matrix = nullptr;
-
-	std::cout << "[Matrix::Matrix] Path to file \"" << path << "\"" << std::endl;
 	
 	read_matrix(path);
 }
@@ -13,9 +11,6 @@ Matrix::Matrix(const std::string & path) {
 Matrix::Matrix(const int& row, const int& col) {
 	this->row = row;
 	this->col = col;
-
-	std::cout << "[Matrix::Matrix] Row=" << row << ", col=" << col << std::endl;
-
 
 	this->matrix = new double*[row];
 	for ( int rowCounter = 0 ; rowCounter < row ; ++ rowCounter ) {
@@ -27,7 +22,6 @@ Matrix::Matrix(const int& row, const int& col) {
 }
 
 Matrix::~Matrix() {
-	std::cout << "[Matrix::~Matrix] destruction" << std::endl;
 	for ( int rowCounter = 0 ; rowCounter < this->row ; ++ rowCounter ) {
 		delete[] this->matrix[rowCounter];
 	}
@@ -72,11 +66,17 @@ Matrix* Matrix::generate_random_matrix(const int row, const int col) {
 
 	for ( int row_counter = 0 ; row_counter < row ; ++ row_counter) {
 		for ( int col_counter = 0 ; col_counter < col ; ++ col_counter ) {
-			random_matrix->set_value(row_counter, col_counter, row_counter*row + col_counter);
+			random_matrix->set_value(row_counter, col_counter, get_random_double());
 		}
 	}
 
 	return random_matrix;
+}
+
+double Matrix::get_random_double() {
+	static std::mt19937 mt{ std::random_device{}() };
+	static std::uniform_real_distribution<> dist(-1000, 1000);
+	return dist(mt);
 }
 
 void Matrix::export_to_file ( std::string path) const {
@@ -102,12 +102,21 @@ void Matrix::read_matrix ( std::string path) {
 	read_matrix_content ( in_stream );
 }
 
+/**
+ * Read size of the matrix.
+ */
 void Matrix::read_matrix_size(std::ifstream& input_stream) {
 	std::string line;
 	getline(input_stream, line);
 	std::stringstream ss ( line );
 	ss >> this->row >> this->col;
-	std::cout << "Size of matrix " << this->row << "x" << this->col << std::endl;
+
+	if ( ss.fail() ) {
+		std::cerr << "Wrong size of matrix" << std::endl;
+		this->row = this->col = 0;
+		this->matrix = nullptr;
+		return;
+	}
 
 	this->matrix = new double*[this->row];
 	for ( int rowCounter = 0 ; rowCounter < this->row ; ++ rowCounter ) {
@@ -124,16 +133,13 @@ void Matrix::read_matrix_content(std::ifstream & input_stream) {
 		std::stringstream ss ( line );
 		for ( int col = 0 ; col < this->col ; ++ col ) {
 			ss >> value;
+			if ( ss.fail() ) {
+				std::cerr << " Error during reading matrix file" << std::endl;
+				return;
+			}
 			this->matrix[row][col] = value;
 		}
 	}
-
-	// for ( int row = 0 ; row < this->row ; ++ row ) {
-	// 	for ( int col = 0 ; col < this->col ; ++ col ) {
-	// 		std::cout << this->matrix[row][col] << " ";
-	// 	}
-	// 	std::cout << std::endl;
-	// }
 }
 
 bool Matrix::check_parameters ( const int & row, const int & col) const {

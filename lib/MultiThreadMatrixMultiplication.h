@@ -4,17 +4,18 @@
 #include "MatrixMultiplication.h"
 #include "MatrixThreadData.h"
 #include "Executor.h"
-// #include <pthread.h>
 #include <thread>
 #include <iostream>
 
 class MultiThreadMatrixMultiplication : public MatrixMultiplication {
 public:
+	MultiThreadMatrixMultiplication(const int thread_count);
 	virtual ~MultiThreadMatrixMultiplication();
+	
 	Matrix* multiply ( const Matrix& left, const Matrix& right);
 
-	double partiallyMatrixMultiplication ( const Matrix& left, const Matrix& right, const int& row, const int& col);
-
+protected:
+	int thread_count;
 };
 
 #endif

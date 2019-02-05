@@ -8,6 +8,10 @@ ThreadQueue::~ThreadQueue() {
 	// TODO: clean queue if not empty
 }
 
+/**
+ * Push new task to queue thread.
+ * Thread-safe as possible.
+ */
 void ThreadQueue::push ( MatrixThreadData* data) {
 	m_queue_mutex.lock();
 
@@ -16,6 +20,10 @@ void ThreadQueue::push ( MatrixThreadData* data) {
 	m_queue_mutex.unlock();
 }
 
+/**
+ * Pop task from queue task.
+ * Thread-safe as possible.
+ */
 MatrixThreadData* ThreadQueue::pop() {
 	m_queue_mutex.lock();
 	if ( m_queue.size() == 0 ) {
@@ -30,6 +38,9 @@ MatrixThreadData* ThreadQueue::pop() {
 	return pop_data;
 }
 
+/**
+ * Check if queue task is empty.
+ */
 bool ThreadQueue::is_empty() {
 	m_queue_mutex.lock();
 
@@ -40,6 +51,9 @@ bool ThreadQueue::is_empty() {
 	return is_empty;
 }
 
+/**
+ * Return size of queue.
+ */
 int ThreadQueue::size() {
 	m_queue_mutex.lock();
 	int size = m_queue.size();
