@@ -54,8 +54,12 @@ int ArgumentResolver::parse_command_line_arguments() {
 
 		} else if ( strcmp(m_arguments[argument_index], help.c_str()) == 0 ) {
 			// help
-			std::cout << std::endl;
+			std::cout << "Usage: ./MatrixMult -left_matrix path_to_left_matrix -right_matrix path_to_right_matrix for single thread solution." << std::endl;
+			std::cout << "Usage: ./MatrixMult -left_matrix path_to_left_matrix -right_matrix path_to_right_matrix -multithread count_of_threads for multithread solution with count_of_threads threads" << std::endl;
+			std::cout << "Usage: ./MatrixMult -left_matrix path_to_left_matrix -right_matrix path_to_right_matrix -result_matrix path_to_result_matrix for exporting final matrix to file" << std::endl;
+			std::cout << "Usage: ./MatrixMult -left_matrix path_to_left_matrix -right_matrix path_to_right_matrix -generate-random-matrix left_row left_col right_row right_col for generating random matrices" << std::endl;
 			argument_index += 1;
+			return 100;
 		} else if ( strcmp(m_arguments[argument_index], left_matrix_arg.c_str()) == 0 ) {
 			// left_matrix path_to_file
 			if ( parse_file(path_to_file_left_matrix, argument_index+1) != 0 ) {

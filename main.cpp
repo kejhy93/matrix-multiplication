@@ -13,7 +13,13 @@ int main(int argc, char ** argv) {
 
 	// Parse command line arguments
 	ArgumentResolver *command_line_resolver = new ArgumentResolver(argc, argv);
-	if ( command_line_resolver->parse_command_line_arguments() != 0 ) {
+	int result = command_line_resolver->parse_command_line_arguments();
+	if ( result == 100 ) {
+		// Help dialog is shown.
+		delete command_line_resolver;
+		return 0;
+	}
+	if ( result != 0 ) {
 		std::cerr << "Command line arguments are wrong" << std::endl;
 		delete command_line_resolver;
 		return 1;
