@@ -2,18 +2,18 @@
 Matrix multiplication
 
 ## Implementace
-Implementace pro jedno vlakno je trivialni. 
-Vicevlaknova implementaci rozdeli problem na mensi problemy ( vynasobeni jedineho radku s jednim sloupcem). Podproblem je predan do fronty ukolu, ze kterych si vlakna z thread poolu vybiraji dokud neni fronta prazdna.
+Implementace pro jedno vlákno je triviální. 
+Vícevláknová implementace rozdělí problem na menší problémy ( vynásobení jediného řádku s jediným sloupcem). Podproblém je předán do fronty úkolů, ze kterých si vlákna z thread poolu vybírají dokud neni fronta prázdná.
 
-Mnozstvi vlaken v thread poolu lze predat jako parametr nebo pouzit defaulte 8 vlaken.
+Množství vláken v thread poolu lze předat jako parametr nebo použít defaultně nastavených 8 vláken.
 
-Soubor ve kterem je matice ulozena musi mit nasledujici format:
-1.radek pocet_radku mezera pocet_sloupcu
-2.radek dale nasleduji prvky matice oddelene mezerou.
+Soubor ve kterém je matice uložena musí mít následující format:
+1.řádek pocet_radku mezera pocet_sloupcu
+2.řádek dále nasledují prvky matice oddělené mezerou.
 
-Nahodne matice lze vtvorit pomoci prepinace -generate-random-matrix left_row left_col right_row right_col -left_matrix path_to_left_matrix -right_matrix path_to_right_matrix
-Pote bude vygenerovana matice s prislusnym poctem radku a sloupcu a ulozena na zadane ceste.
+Náhodné matice lze vytvořit pomocí přepínače -generate-random-matrix left_row left_col right_row right_col -left_matrix path_to_left_matrix -right_matrix path_to_right_matrix
+Poté bude vygenerována matice s příslušným počtem řádků a sloupců a uložena na zadané cestě.
 
-Prepinace -left_matrix a -right_matrix slouzi k predani cesty k danym maticim a jsou povinne.
-Prepinace -result_matrix slouzi k predani cesty kam se ma vysledna matice vyexportovat. Jedna se o volitelny parameter, pokud nebude zapsan vypise se vysledek do konzole.
-Prepinac -multithread je volitelny parameter, ktery povoli vicevlaknove reseni. Volitelny parameter za cislo za prepinacem, ktery lze zmenit pocet vlaken.
+Přepínače -left_matrix a -right_matrix slouží k předání cesty k daným maticím a jsou povinné.
+Přepínače -result_matrix slouží k předání cesty kam se ma vysledná matice vyexportovat. Jedná se o volitelný parameter, pokud nebude zapsán vypíše se výsledek do konzole.
+Přepínač -multithread je volitelný parameter, který povolí vícevláknové řešení. Volitelný parameter za číslo za přepínačem, který lze změnit počet vláken.
