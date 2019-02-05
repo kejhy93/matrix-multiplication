@@ -30,6 +30,23 @@ int main(int argc, char ** argv) {
 	} else {
 		left_matrix = new Matrix(command_line_resolver->get_path_to_left_matrix());
 		right_matrix = new Matrix(command_line_resolver->get_path_to_right_matrix());
+
+		bool are_matrices_valid = true;
+		if ( left_matrix->get_row() == 0 && left_matrix->get_col() == 0 ) {
+			std::cerr << "Error during loading left-matrix" << std::endl;
+			are_matrices_valid = false;
+		}
+		if ( right_matrix->get_row() == 0 && right_matrix->get_col() == 0 ) {
+			std::cerr << "Error during loading right-matrix" << std::endl;
+			are_matrices_valid = false;
+		}
+
+		if ( are_matrices_valid) {
+			delete left_matrix;
+			delete right_matrix;
+			delete command_line_resolver;
+			return 1;
+		}
   	} 
   
 	MatrixMultiplication * matrix_multiplication = nullptr;
