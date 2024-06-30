@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: "CMake"
-          command: cmake build
+          command: cmake build .
       - run:
           name: "Make it happened"
           command: make all
