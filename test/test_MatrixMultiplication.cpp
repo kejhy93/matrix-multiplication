@@ -7,10 +7,17 @@ const int SUCCESS_TEST = 0;
 const int FAILED_TEST = 1;
 
 int test_matricesCompatibleForMultiplication();
+int test_linearCombination();
 
 int main() {
 
     int result = test_matricesCompatibleForMultiplication();
+    if (result == FAILED_TEST)
+        return FAILED_TEST;
+    
+    result = test_linearCombination();
+    if (result == FAILED_TEST)
+        return FAILED_TEST;
 
     return SUCCESS_TEST;
 }
@@ -54,4 +61,8 @@ int test_matricesCompatibleForMultiplication() {
     std::cout << "Compatible matrices check PASSED" << std::endl;
 
     return SUCCESS_TEST;
+}
+
+int test_linearCombination() {
+    
 }
