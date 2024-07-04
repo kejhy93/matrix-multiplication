@@ -1,6 +1,14 @@
 # matrix-multiplication
 Matrix multiplication
 
+## Run
+```
+cmake -S. -Bbuild
+cd build
+cmake --build .
+ctest
+```
+
 ## Implementace
 Implementace pro jedno vlákno je triviální. 
 Vícevláknová implementace rozdělí problem na menší problémy ( vynásobení jediného řádku s jediným sloupcem). Podproblém je předán do fronty úkolů, ze kterých si vlákna z thread poolu vybírají dokud neni fronta prázdná.
