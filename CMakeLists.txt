@@ -11,7 +11,11 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${PROJECT_SOURCE_DIR}/lib)
 include_directories(${PROJECT_SOURCE_DIR}/test)
 add_executable(test_matrix test/test_Matrix.cpp src/Matrix.cpp)
+add_executable(test_matrixMultiplication test/test_MatrixMultiplication.cpp src/MatrixMultiplication.cpp src/Matrix.cpp)
+
 target_link_libraries(test_matrix Threads::Threads)
+target_link_libraries(test_matrixMultiplication Threads::Threads)
+
 file(GLOB SOURCES main.cpp ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 add_executable(MatrixMult ${SOURCES})
@@ -39,5 +43,7 @@ include(CTest)
 enable_testing()
 add_test(
   NAME test_matrix 
-  COMMAND test_matrix
-  )
+  COMMAND $<TARGET_FILE:test_matrix>)
+add_test(
+  NAME test_matrixMultiplication 
+  COMMAND $<TARGET_FILE:test_matrixMultiplication>)
