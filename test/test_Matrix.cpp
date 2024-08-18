@@ -28,6 +28,7 @@ int test_matrixConstructor()
     if (WIDTH != width)
     {
         std::cout << "Width is not correct. Expected " << WIDTH << ", got " << width << std::endl;
+        delete matrix;
         return FAILED_TEST;
     }
     std::cout << "Width is " << width << std::endl;
@@ -36,6 +37,7 @@ int test_matrixConstructor()
     if (HEIGHT != height)
     {
         std::cout << "Height is not correct. Expected " << HEIGHT << ", got " << height << std::endl;
+        delete matrix;
         return FAILED_TEST;
     }
     std::cout << "Height is " << height << std::endl;
