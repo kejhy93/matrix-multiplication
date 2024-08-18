@@ -1,6 +1,16 @@
 # matrix-multiplication
 Matrix multiplication
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kejhy93_matrix-multiplication&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kejhy93_matrix-multiplication)
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=kejhy93_matrix-multiplication&metric=bugs)](https://sonarcloud.io/summary/new_code?id=kejhy93_matrix-multiplication)
+
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=kejhy93_matrix-multiplication&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=kejhy93_matrix-multiplication)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kejhy93_matrix-multiplication&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kejhy93_matrix-multiplication)
+
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=kejhy93_matrix-multiplication&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=kejhy93_matrix-multiplication)
+
 ## Run
 ```
 cmake -S. -Bbuild
