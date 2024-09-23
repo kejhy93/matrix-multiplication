@@ -38,6 +38,8 @@ int test_matricesCompatibleForMultiplication()
     if (areMatricesCompatible == false)
     {
         std::cout << "Compatible matrices to multiple FAILED" << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
     std::cout << "Compatible matrices check PASSED" << std::endl;
@@ -46,6 +48,8 @@ int test_matricesCompatibleForMultiplication()
     if (areMatricesCompatible == false)
     {
         std::cout << "Compatible matrices to multiple FAILED" << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
     std::cout << "Compatible matrices check PASSED" << std::endl;
@@ -60,6 +64,8 @@ int test_matricesCompatibleForMultiplication()
     if (areMatricesCompatible == false)
     {
         std::cout << "Compatible matrices to multiple FAILED" << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
     std::cout << "Compatible matrices check PASSED" << std::endl;
@@ -68,6 +74,8 @@ int test_matricesCompatibleForMultiplication()
     if (areMatricesCompatible == false)
     {
         std::cout << "Compatible matrices to multiple FAILED" << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
     std::cout << "Compatible matrices check PASSED" << std::endl;
@@ -82,6 +90,8 @@ int test_matricesCompatibleForMultiplication()
     if (areMatricesCompatible == true)
     {
         std::cout << "Incompatible matrices to multiple FAILED" << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
     std::cout << "Incompatible matrices check PASSED" << std::endl;
@@ -90,6 +100,8 @@ int test_matricesCompatibleForMultiplication()
     if (areMatricesCompatible == true)
     {
         std::cout << "Incompatible matrices to multiple FAILED" << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
     std::cout << "Incompatible matrices check PASSED" << std::endl;
@@ -126,6 +138,8 @@ int test_linearCombination()
     {
         std::cout << "Failed linear combination first row, first col" << std::endl;
         std::cout << "Expected 6.0, got " << result << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
 
@@ -136,6 +150,8 @@ int test_linearCombination()
     {
         std::cout << "Failed linear combination first row, second col" << std::endl;
         std::cout << "Expected 7.0, got " << result << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
 
@@ -146,6 +162,8 @@ int test_linearCombination()
     {
         std::cout << "Failed linear combination second row, first col" << std::endl;
         std::cout << "Expected 26.0, got " << result << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
 
@@ -156,8 +174,12 @@ int test_linearCombination()
     {
         std::cout << "Failed linear combination second row, second col" << std::endl;
         std::cout << "Expected 31.0, got " << result << std::endl;
+        delete leftMatrix;
+        delete rightMatrix;
         return FAILED_TEST;
     }
 
+    delete leftMatrix;
+    delete rightMatrix;
     return SUCCESS_TEST;
 }
